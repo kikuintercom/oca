@@ -12,11 +12,8 @@ an object and generalized data access.
 
 OcaRoot::OcaRoot()
 {
-    OcaClassID              ClassID = 1;
-    OcaClassVersionNumber   ClassVersion    = 1;
-    OcaONo                  ObjectNumber;
-    OcaBoolean              Lockable;
-    OcaString               Role;
+    ClassID = 1;
+    ClassVersion    = 1;
 }
 
 OcaRoot::~OcaRoot()
