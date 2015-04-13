@@ -10,4 +10,10 @@ typedef uint16_t    OcaONo;
 typedef bool        OcaBoolean;
 typedef std::string OcaString;
 
+typedef bool        OcaPropertyChangedEventData;
+enum class          OcaStatus;// {} OcaStatus;
+//enum OcaStatus;
+enum class          OcaClassIdentification;//{ClassID, ClassVersion} OcaClassIdentification;
+//enum OcaClassIdentification;
+
 #endif

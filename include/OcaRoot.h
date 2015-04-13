@@ -9,6 +9,8 @@ class OcaRoot
         OcaRoot();
         virtual ~OcaRoot();
 
+        void PropertyChanged(OcaPropertyChangedEventData);
+        OcaStatus GetClassIdentification(OcaClassIdentification);
 
     protected:
     private:
