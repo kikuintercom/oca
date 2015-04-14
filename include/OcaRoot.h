@@ -9,7 +9,8 @@ class OcaRoot
         OcaRoot();
         virtual ~OcaRoot();
 
-        void PropertyChanged(OcaPropertyChangedEventData);
+        // FIXME: Should the PropertyChangedEventData type be OcaRoot?
+        void PropertyChanged(OcaPropertyChangedEventData<OcaRoot>&);
         OcaStatus GetClassIdentification(OcaClassIdentification);
         OcaStatus GetLockable(OcaBoolean);
         OcaStatus Lock();

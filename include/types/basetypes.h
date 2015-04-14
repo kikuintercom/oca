@@ -1,12 +1,13 @@
 #ifndef BASETYPES_H
 #define BASETYPES_H
 
-#include "string"
+#include <string>
 #include "stdint.h"
 
 /************************************************
 BASE DATATYPES
 ************************************************/
+
 typedef bool        OcaBoolean;
 
 typedef int8_t      OcaInt8;
@@ -23,49 +24,6 @@ typedef float       OcaFloat32;
 typedef double      OcaFloat64;
 
 typedef std::string OcaString;
-
-struct OcaBitstring
-{
-    uint16_t NrBits; // The size of the bitmask in bits.
-    OcaUint8 Bitstring; // The bitstring data as an array of bytes with
-                        // the most significant bit of the first byte being
-                        // bit number 0.
-    public:
-        OcaBitstring(OcaUint8 bitstring){
-            Bitstring = bitstring;
-
-            // FIXME: Actually wrong, just a stopgap.
-            NrBits = sizeof(bitstring);
-        }
-};
-
-struct OcaBlob
-{
-    uint16_t DataSize; // The size of the BLOB data in bytes.
-    uint8_t* Data; // The BLOB data.
-
-    public:
-        OcaBlob(uint8_t blob[]){
-            Data = blob;
-            // FIXME: Actually wrong, just a stopgap.
-            DataSize = sizeof(blob);
-        }
-
-};
-
-struct OcaBlobFixedLen
-{
-    uint16_t DataSize; // The size of the BLOB data in bytes.
-    uint8_t* Data; // The BLOB data.
-
-public:
-    OcaBlobFixedLen(uint8_t blob[]){
-        Data = blob;
-        // FIXME: Actually wrong, just a stopgap.
-        DataSize = sizeof(blob);
-    }
-
-};
 
 typedef OcaUint8    OcaEnumItem;
 
@@ -88,5 +46,86 @@ enum class          OcaBaseDataType : OcaEnumItem{
     OcaBlobFixedLen // Byte array
 };
 
+class OcaBitstring
+{
+    uint16_t NrBits; // The size of the bitmask in bits.
+    OcaUint8 Bitstring; // The bitstring data as an array of bytes with
+                        // the most significant bit of the first byte being
+                        // bit number 0.
+    public:
+        OcaBitstring(){}
+        virtual ~OcaBitstring(){};
+
+        operator std::string() const { return ""; };
+};
+
+class OcaBlob
+{
+    uint16_t DataSize; // The size of the BLOB data in bytes.
+    uint8_t* Data; // The BLOB data.
+
+    public:
+        OcaBlob(){}
+        virtual ~OcaBlob(){};
+
+        // TODO: Make this work
+        operator std::string() const { return ""; };
+
+};
+
+class OcaBlobFixedLen
+{
+    uint16_t DataSize; // The size of the BLOB data in bytes.
+    uint8_t* Data; // The BLOB data.
+
+public:
+    OcaBlobFixedLen(){};
+    virtual ~OcaBlobFixedLen(){};
+
+    // TODO: Make this work
+    operator std::string() const { return ""; };
+
+};
+
+template <class T> class OcaList
+{
+    OcaUint16 Count;
+    T Items[];
+
+public:
+    OcaList(){};
+    virtual ~OcaList(){};
+};
+
+template <class T> class OcaList2D
+{
+    OcaUint16 nX;
+    OcaUint16 nY;
+    T Items[0][0];
+
+public:
+    OcaList2D(){};
+    virtual ~OcaList2D();
+};
+
+template <class K, class V> class OcaMapItem
+{
+    K Key;
+    V Value;
+
+public:
+    OcaMapItem(){};
+    virtual ~OcaMapItem(){};
+};
+
+template <class K, class V> class OcaMap
+{
+    OcaUint16 Count;
+    OcaMapItem<K,V> Items[];
+
+public:
+    OcaMap(){};
+    virtual ~OcaMap(){};
+};
 
 #endif // BASETYPES_H

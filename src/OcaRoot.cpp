@@ -12,8 +12,6 @@ an object and generalized data access.
 
 OcaRoot::OcaRoot()
 {
-    ClassID = 1;
-    ClassVersion    = 1;
 }
 
 OcaRoot::~OcaRoot()

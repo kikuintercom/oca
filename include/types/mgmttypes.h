@@ -5,4 +5,6 @@
 MANAGEMENT DATATYPES
 ************************************************/
 
+typedef uint16_t OcaComponent;
+
 #endif // MGMTDATATYPES_H
