@@ -4,6 +4,13 @@
 #include "stdint.h"
 //#include <mgmttypes.h>
 
+//Required to build. Should be defined in mgmttypes.h
+enum class OcaComponent : OcaUint16
+{
+    BootLoader = 0
+
+};
+
 /************************************************
 FRAMEWORK DATATYPES
 ************************************************/
