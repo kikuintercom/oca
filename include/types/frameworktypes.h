@@ -11,6 +11,9 @@ enum class OcaComponent : OcaUint16
 
 };
 
+//Required to build. Should be defined in networkypes.h
+typedef OcaBlob OcaNetworkHostID;
+
 /************************************************
 FRAMEWORK DATATYPES
 ************************************************/
@@ -57,6 +60,16 @@ public:
 };
 
 typedef OcaUint32 OcaONo;
+
+class OcaOPath
+{
+    OcaNetworkHostID HostID;
+    OcaONo ONo;
+
+public:
+    OcaOPath(){};
+    virtual ~OcaOPath(){};
+};
 
 class OcaObjectIdentification
 {
