@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/kikuintercom/oca.svg?branch=master)](https://travis-ci.org/kikuintercom/oca)
 # OCA
 Having a crack at a C++ implementation of the Open Control Architecture
 
