@@ -151,5 +151,35 @@ public:
     OcaStatus SetPassbandGain(OcaDB);
 };
 
+class OcaFilterPolynomial : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaList<OcaFloat32>     A[];
+    OcaList<OcaFloat32>     B[];
+    OcaFrequency            SampleRate;
+    OcaUint8                MaxOrder;
+
+public:
+    OcaStatus GetCoefficients(OcaList<OcaFloat32>, OcaList<OcaFloat32>);
+    OcaStatus SetCoeffecients(OcaList<OcaFloat32>, OcaList<OcaFloat32>);
+    OcaStatus GetSampleRate(OcaFrequency, OcaFrequency, OcaFrequency);
+    OcaStatus SetSampleRate(OcaFrequency);
+    OcaStatus GetMaxOrder(OcaUint8);
+};
+
+class OcaFilterFIR : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaUint32               Length;
+    OcaList<OcaFloat32>     Coefficients;
+    OcaFrequency            SampleRate;
+
+public:
+    OcaStatus
+};
 
 #endif // ACTUATORS_H
