@@ -1,5 +1,5 @@
 CC=g++
-GCCVERSIONGTEQ4 := $(shell expr `gcc -dumpversion | cut -f1.2 -d. ` \>= 4.7)
+GCCVERSIONGTEQ4 := $(shell expr `gcc -dumpversion | cut -f1,2 -d. ` \>= 4.7)
 DIR := ${CURDIR}/
 
 ifeq ("$(GCCVERSIONGTEQ4)","0")
@@ -12,6 +12,7 @@ INCLUDEDIR=$(DIR)include/
 CFLAGS=-c -I$(INCLUDEDIR) -std=$(STD) -Wall
 
 all:
+	echo $(GCCVERSIONGTEQ4)
 	$(CC) $(DIR)src/OcaBuildMe.cpp $(CFLAGS)
 
 clean:
