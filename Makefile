@@ -12,7 +12,6 @@ INCLUDEDIR=$(DIR)include/
 CFLAGS=-c -I$(INCLUDEDIR) -std=$(STD) -Wall
 
 all:
-	echo $(GCCVERSIONGTEQ4)
 	$(CC) $(DIR)src/OcaBuildMe.cpp $(CFLAGS)
 
 clean:
