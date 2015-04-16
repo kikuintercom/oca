@@ -1,5 +1,5 @@
 CC=g++
-GCCVERSIONGTEQ4 := $(shell expr `gcc -dumpversion | cut -f1 -d. -` \>= 4.7)
+GCCVERSIONGTEQ4 := $(shell expr `gcc -dumpversion | cut -f1.2 -d. ` \>= 4.7)
 DIR := ${CURDIR}/
 
 ifeq ("$(GCCVERSIONGTEQ4)","0")
