@@ -113,7 +113,7 @@ enum class OcaClassicalFilterShape : OcaEnumItem
     LinkwitzRiley
 };
 
-enum class OcaFilterPassBand : OcaEnumItem
+enum class OcaFilterPassband : OcaEnumItem
 {
     HiPass = 1,
     LowPass,
