@@ -179,7 +179,198 @@ private:
     OcaFrequency            SampleRate;
 
 public:
-    OcaStatus
+    OcaStatus GetLength(OcaUint32, OcaUint32, OcaUint32);
+    OcaStatus GetCoefficients(OcaList<OcaFloat32>);
+    OcaStatus SetCoefficients(OcaList<OcaFloat32>);
+    OcaStatus GetSampleRate(OcaFrequency, OcaFrequency, OcaFrequency);
+    OcaStatus SetSampleRate(OcaFrequency);
+};
+
+class OcaFilterArbitraryCurve : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaTransferFunction     TransferFunction;
+    OcaFrequency            SampleRate;
+
+public:
+    OcaStatus GetTransferFunction(OcaTransferFunction);
+    OcaStatus SetTransferFunction(OcaList<OcaFrequency>,
+                                  OcaList<OcaDB>,
+                                  OcaList<OcaFloat32>);
+    OcaStatus GetSampleRate(OcaFrequency, OcaFrequency, OcaFrequency);
+    OcaStatus SetSampleRate(OcaFrequency);
+};
+
+class OcaDynamics : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaBoolean              Triggered;
+    OcaDB                   DynamicGain;
+    OcaDynamicsFunction     Function;
+    OcaFloat32              Ratio;
+    OcaDBr                  Threshold;
+    OcaPresentationUnit    ThresholdPresentationUnits;
+    OcaLevelDetectionLaw     DetectorLaw;
+    OcaTimeInterval         AttackTime;
+    OcaTimeInterval         ReleaseTime;
+    OcaTimeInterval         HoldTime;
+    OcaDB                   DynamicGainCeiling;
+    OcaDB                   DynamicGainFloor;
+    OcaFloat32              KneeParameter;
+
+public:
+    OcaStatus GetTriggered(OcaBoolean);
+    OcaStatus GetDynamicGain(OcaDB);
+    OcaStatus GetFunction(OcaDynamicsFunction);
+    OcaStatus SetFunction(OcaDynamicsFunction);
+    OcaStatus GetRatio(OcaFloat32, OcaFloat32, OcaFloat32);
+    OcaStatus SetRatio(OcaFloat32);
+    OcaStatus GetThreshold(OcaDBr, OcaDBz, OcaDBz);
+    OcaStatus SetThreshold(OcaDBr);
+    OcaStatus GetThresholdPresentationUnits(OcaPresentationUnit);
+    OcaStatus SetThresholdPresentationUnits(OcaPresentationUnit);
+    OcaStatus GetDetectorLaw(OcaLevelDetectionLaw);
+    OcaStatus SetDetectorLaw(OcaLevelDetectionLaw);
+    OcaStatus GetAttackTime(OcaTimeInterval, OcaTimeInterval, OcaTimeInterval);
+    OcaStatus SetAttackTime(OcaTimeInterval);
+    OcaStatus GetReleaseTime(OcaTimeInterval, OcaTimeInterval, OcaTimeInterval);
+    OcaStatus SetReleaseTime(OcaTimeInterval);
+    OcaStatus GetHoldTime(OcaTimeInterval, OcaTimeInterval, OcaTimeInterval);
+    OcaStatus SetHoldTime(OcaTimeInterval);
+    OcaStatus GetDynamicGainFloor(OcaDB, OcaDB, OcaDB);
+    OcaStatus SetDynamicGainFloor(OcaDB);
+    OcaStatus GetDynamicGainCeiling(OcaDB, OcaDB, OcaDB);
+    OcaStatus SetDynamicGainCeiling(OcaDB);
+    OcaStatus GetKneeParameter(OcaFloat32, OcaFloat32, OcaFloat32);
+    OcaStatus SetKneeParameter(OcaFloat32);
+};
+
+class OcaDynamicsDetector : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaLevelDetectionLaw    Law;
+    OcaTimeInterval         AttackTime;
+    OcaTimeInterval         ReleaseTime;
+    OcaTimeInterval         HoldTime;
+
+public:
+    OcaStatus GetLaw(OcaLevelDetectionLaw);
+    OcaStatus SetLaw(OcaLevelDetectionLaw);
+    OcaStatus GetAttackTime(OcaTimeInterval, OcaTimeInterval, OcaTimeInterval);
+    OcaStatus SetAttackTime(OcaTimeInterval);
+    OcaStatus GetReleaseTime(OcaTimeInterval, OcaTimeInterval, OcaTimeInterval);
+    OcaStatus SetReleaseTime(OcaTimeInterval);
+    OcaStatus GetHoldTime(OcaTimeInterval, OcaTimeInterval, OcaTimeInterval);
+    OcaStatus SetHoldTIme(OcaTimeInterval);
+};
+
+class OcaDynamicsCurve : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaUint8                nSegments;
+    OcaList<OcaDBr>         Threshold[];
+    OcaList<OcaFloat32>     Slope[];
+    OcaList<OcaFloat32>     KneeParameter;
+    OcaDB                   DynamicGainFloor;
+    OcaDB                   DynamicGainCeiling;
+
+public:
+    OcaStatus GetNSegments(OcaUint8, OcaUint8, OcaUint8);
+    OcaStatus SetNSegments(OcaUint8);
+    OcaStatus GetThreshold(OcaDBr, OcaDBz, OcaDBz);
+    OcaStatus SetThreshold(OcaList<OcaDBr>);
+    OcaStatus GetSlope(OcaList<OcaFloat32>,
+                       OcaList<OcaFloat32>,
+                       OcaList<OcaFloat32>);
+    OcaStatus SetSlope(OcaList<OcaFloat32>);
+    OcaStatus GetKneeParameter(OcaList<OcaFloat32>,
+                               OcaList<OcaFloat32>,
+                               OcaList<OcaFloat32>);
+    OcaStatus SetKneeParameter(OcaList<OcaFloat32>);
+    OcaStatus GetDynamicGainCeiling(OcaDB, OcaDB, OcaDB);
+    OcaStatus SetDynamicGainCeiling(OcaDB);
+    OcaStatus GetDynamicGainFloor(OcaDB, OcaDB, OcaDB);
+    OcaStatus SetDynamicGainFloor(OcaDB);
+};
+
+class OcaSignalGenerator : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaFrequency            Frequency1;
+    OcaFrequency            Frequency2;
+    OcaDBz                  Level;
+    OcaWaveformType         Waveform;
+    OcaSweepType            SweepType;
+    OcaTimeInterval         SweepTime;
+    OcaBoolean              SweepRepeat;
+    OcaBoolean              Generating;
+
+public:
+    OcaStatus GetFrequency1(OcaFrequency, OcaFrequency, OcaFrequency);
+    OcaStatus SetFrequency1(OcaFrequency);
+    OcaStatus GetFrequency2(OcaFrequency, OcaFrequency, OcaFrequency);
+    OcaStatus SetFrequency2(OcaFrequency);
+    OcaStatus GetLevel(OcaDBz, OcaDBz, OcaDBz);
+    OcaStatus SetLevel(OcaDBz);
+    OcaStatus GetWaveform(OcaWaveformType);
+    OcaStatus SetWaveform(OcaWaveformType);
+    OcaStatus GetSweepType(OcaSweepType);
+    OcaStatus SetSweepType(OcaSweepType);
+    OcaStatus GetSweepTime(OcaTimeInterval, OcaTimeInterval, OcaTimeInterval);
+    OcaStatus SetSweepTime(OcaTimeInterval);
+    OcaStatus GetSweepRepeat(OcaBoolean);
+    OcaStatus SetSweepRepeat(OcaBoolean);
+    OcaStatus GetGenerating(OcaBoolean);
+    OcaStatus Start();
+    OcaStatus Stop();
+};
+
+class OcaSignalInput : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+};
+
+class OcaSignalOutput : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+};
+
+class OcaTemperatureActuator : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaTemperature          Temperature;
+
+public:
+    OcaStatus GetTemperature(OcaTemperature, OcaTemperature, OcaTemperature);
+    OcaStatus SetTemperature(OcaTemperature);
+};
+
+class OcaIdentificationActuator : OcaActuator
+{
+private:
+    OcaClassID              ClassID;
+    OcaClassVersionNumber   ClassVersion;
+    OcaBoolean              active;
+
+public:
+    OcaStatus GetActive(OcaBoolean);
+    OcaStatus SetActive(OcaBoolean);
 };
 
 #endif // ACTUATORS_H
