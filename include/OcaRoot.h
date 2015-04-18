@@ -5,7 +5,7 @@
 
 class OcaRoot
 {
-    public:
+public:
         OcaRoot();
         virtual ~OcaRoot();
 
@@ -18,8 +18,8 @@ class OcaRoot
         OcaStatus GetRole(OcaString);
 
 
-    protected:
-    private:
+protected:
+private:
         OcaClassID              ClassID;
         OcaClassVersionNumber   ClassVersion;
         OcaONo                  ObjectNumber;
