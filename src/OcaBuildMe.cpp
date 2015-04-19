@@ -8,3 +8,4 @@
 #include "../include/classes/workers/blocks.h"
 #include "../include/classes/workers/networking.h"
 #include "../include/classes/agents/agents.h"
+#include "../include/classes/managers/managers.h"
