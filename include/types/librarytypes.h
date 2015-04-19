@@ -46,16 +46,6 @@ public:
     virtual ~OcaLibVolMetadata(){};
 };
 
-template <class T> class OcaLibVol
-{
-    OcaLibVolMetadata Metadata;
-    T Data;
-
-public:
-    OcaLibVol(){};
-    virtual ~OcaLibVol(){};
-};
-
 class OcaLibParamSetAssignment
 {
     OcaLibVolIdentifier ParamSetIdentifier;
@@ -83,6 +73,16 @@ class OcaLibVolData_Patch
 public:
     OcaLibVolData_Patch(){};
     virtual ~OcaLibVolData_Patch(){};
+};
+
+template <class T = OcaLibVolData_ParamSet> class OcaLibVol
+{
+    OcaLibVolMetadata Metadata;
+    T Data;
+
+public:
+    OcaLibVol(){};
+    virtual ~OcaLibVol(){};
 };
 
 #endif // LIBRARYTYPES_H

@@ -99,6 +99,13 @@ enum class OcaStreamType : OcaEnumItem
 
 enum class OcaStreamStatus : OcaEnumItem
 {
+    NotConnected = 0,
+    Connected,
+    Paused
+};
+
+enum class OcaStreamConnectorStatus : OcaEnumItem
+{
     NotAvailable = 0,
     Idle,
     Connected,

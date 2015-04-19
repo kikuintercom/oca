@@ -6,3 +6,5 @@
 #include "../include/classes/workers/sensors.h"
 #include "../include/classes/workers/basicsensors.h"
 #include "../include/classes/workers/blocks.h"
+#include "../include/classes/workers/networking.h"
+#include "../include/classes/agents/agents.h"
